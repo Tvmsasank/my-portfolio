@@ -221,8 +221,7 @@ export default function App() {
               initial={{ opacity: 0, y: -14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.25 }}
-              className="block font-mono-label text-[10px] tracking-[0.42em] text-primary uppercase mb-8"
-            >
+              className="block font-mono-label text-[8px] sm:text-[10px] tracking-[0.25em] sm:tracking-[0.42em] text-primary uppercase mb-8 leading-relaxed"            >
               AWS DevOps &nbsp;·&nbsp; .NET Developer &nbsp;·&nbsp; Hyderabad
             </motion.span>
 
@@ -248,8 +247,7 @@ export default function App() {
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 1.1 }}
-              className="text-muted-foreground text-base md:text-lg max-w-lg mx-auto leading-relaxed mb-12"
-            >
+              className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-lg mx-auto leading-relaxed mb-12 px-2"            >
               Building scalable cloud infrastructure and reliable .NET systems.
               Bridging development and operations with AWS and modern automation.
             </motion.p>
