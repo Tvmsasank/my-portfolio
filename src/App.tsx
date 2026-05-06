@@ -153,8 +153,7 @@ export default function App() {
             : ""
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-          <button
+        <div className="max-w-9xl mx-auto px-4 sm:px-6 md:px-12 h-16 flex items-center justify-between gap-4 overflow-hidden">          <button
             onClick={() => goto("hero")}
             className="font-display text-sm tracking-[0.22em] uppercase text-primary hover:opacity-70 transition-opacity"
           >
@@ -201,7 +200,7 @@ export default function App() {
         {/* ── HERO ─────────────────────────────────────────────────────── */}
         <section
           id="hero"
-          className="min-h-screen flex flex-col items-center justify-center relative px-6 text-center"
+          className="min-h-screen flex flex-col items-center justify-center relative px-4 sm:px-6 text-center overflow-hidden"
         >
           {/* Dot grid */}
           <div
@@ -217,8 +216,8 @@ export default function App() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[420px] rounded-full bg-primary/5 blur-[160px]" />
           </div>
 
-          <div className="relative z-10 max-w-5xl mx-auto w-full">
-            <motion.span
+          <div className="relative z-10 max-w-5xl mx-auto w-full px-2 sm:px-0">
+              <motion.span
               initial={{ opacity: 0, y: -14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.25 }}
@@ -231,7 +230,7 @@ export default function App() {
               initial={{ opacity: 0, y: 56 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.15, delay: 0.42, ease: "easeOut" }}
-              className="font-display font-black text-[clamp(3.6rem,8vw,10.5rem)] leading-[0.84] tracking-[-0.01em] text-foreground mb-6"
+              className="font-display font-black text-[clamp(2.8rem,7vw,10.5rem)] leading-[0.9] tracking-[-0.02em] text-foreground mb-6 break-words"
             >
               Venkatamani
               <br />
@@ -259,17 +258,16 @@ export default function App() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 1.28 }}
-              className="flex flex-wrap items-center justify-center gap-4 mb-16"
-            >
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 w-full sm:w-auto"            >
               <button
                 onClick={() => goto("projects")}
-                className="px-8 py-3.5 bg-primary text-primary-foreground font-mono-label text-[10px] tracking-[0.28em] uppercase hover:bg-primary/82 transition-all duration-300 active:scale-95"
+                className="w-full sm:w-auto px-8 py-3.5 bg-primary text-primary-foreground font-mono-label text-[10px] tracking-[0.28em] uppercase hover:bg-primary/82 transition-all duration-300 active:scale-95"
               >
                 View Projects
               </button>
               <button
                 onClick={() => goto("contact")}
-                className="px-8 py-3.5 border border-border font-mono-label text-[10px] tracking-[0.28em] uppercase text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-300 active:scale-95"
+                className="w-full sm:w-auto px-8 py-3.5 border border-border font-mono-label text-[10px] tracking-[0.28em] uppercase text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-300 active:scale-95"
               >
                 Get In Touch
               </button>
