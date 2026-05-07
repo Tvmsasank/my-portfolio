@@ -529,41 +529,33 @@ export default function App() {
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                     <div className="relative z-10">
-                    <div className="flex items-start justify-between gap-3 mb-5">
-                      <div>
-                        <span className="block font-mono-label text-[9px] tracking-[0.32em] text-muted-foreground/70 uppercase mb-2">
-                          {p.type}
-                        </span>
-
-                        {p.url ? (
-                          <a
-                            href={`https://${p.url}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group flex items-center gap-2 w-fit cursor-pointer"
-                          >
-                            <h3 className="font-display text-xl text-foreground transition-colors duration-300 group-hover:text-primary">
-                              {p.title}
-                            </h3>
-
-                            <div className="flex items-center gap-1 opacity-0 translate-x-[-60px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                              <span className="font-mono-label text-[8px] tracking-[0.18em] uppercase text-primary">
-                                Live Site
-                              </span>
-
-                              <ExternalLink
-                                size={13}
-                                className="text-primary group-hover:rotate-12 transition-transform duration-300"
-                              />
-                            </div>
-                          </a>
-                        ) : (
+                      <div className="flex items-start justify-between gap-3 mb-5">
+                        <div>
+                          <span className="block font-mono-label text-[9px] tracking-[0.32em] text-muted-foreground/70 uppercase mb-2">
+                            {p.type}
+                          </span>
                           <h3 className="font-display text-xl text-foreground">
                             {p.title}
                           </h3>
-                        )}
+                        </div>
+                        <div className="flex items-center gap-2 flex-shrink-0 pt-0.5">
+                          <span className="font-mono-label text-[10px] text-muted-foreground">
+                            {p.period}
+                          </span>
+                          {p.url && (
+                            <a
+                              href={`https://${p.url}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`Visit ${p.title}`}
+                              className="text-muted-foreground hover:text-primary transition-colors"
+                            >
+                              <ExternalLink size={13} />
+                            </a>
+                          )}
+                        </div>
                       </div>
-                      </div>
+
                       <ul className="space-y-2.5 mb-6">
                         {p.bullets.map((b, i) => (
                           <li key={i} className="flex items-start gap-2.5">
