@@ -3,14 +3,14 @@
 :root {
   --font-size: 16px;
   --background: #07111f;
-  --foreground: #f5f7fa;
-  --card: #0d1726;
-  --card-foreground: #f5f7fa;
+  --foreground: #f8fafc;
+  --card: rgba(13, 23, 38, 0.72);
+  --card-foreground: #f8fafc;
   --popover: #111111;
   --popover-foreground: #F0EBE0;
   --primary: #3b82f6;
   --primary-foreground: #ffffff;
-  --secondary: #111c2d;
+  --secondary: #0f1b2d;
   --secondary-foreground: #F0EBE0;
   --muted: #94a3b8;
   --muted-foreground: #94a3b8;
@@ -18,7 +18,7 @@
   --accent-foreground: #0A0A0A;
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
-  --border: #1e293b;
+  --border: rgba(148, 163, 184, 0.14);
   --input: transparent;
   --input-background: #1A1A1A;
   --switch-background: #333333;
