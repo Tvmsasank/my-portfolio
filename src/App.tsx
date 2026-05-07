@@ -210,7 +210,7 @@ export default function App() {
         </div>
 
         {menuOpen && (
-          <div className="md:hidden bg-card border-b border-border px-6 py-6 space-y-5">
+        <div className="md:hidden bg-[#07111ff2] backdrop-blur-md border-b border-white/10 px-6 py-6 space-y-5">            
             {NAV_ITEMS.map((n) => (
               <button
                 key={n}
@@ -228,8 +228,7 @@ export default function App() {
         {/* ── HERO ─────────────────────────────────────────────────────── */}
         <section
           id="hero"
-          className="min-h-screen flex flex-col items-center justify-center relative px-4 sm:px-6 text-center overflow-hidden pt-24 pb-20"
-        >
+          className="min-h-screen flex flex-col items-center justify-center relative px-4 sm:px-6 text-center overflow-hidden pt-14 md:pt-20 pb-16 md:pb-20"        >
           {/* Dot grid */}
           <div
             className="absolute inset-0 pointer-events-none"
@@ -244,8 +243,7 @@ export default function App() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[420px] rounded-full bg-gradient-to-r from-blue-500/20 via-sky-400/10 to-white/10 blur-[160px]" />
           </div>
 
-          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
-              <motion.span
+          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 overflow-hidden max-md:-mt-10">              <motion.span
               initial={{ opacity: 0, y: -14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.25 }}
@@ -257,7 +255,7 @@ export default function App() {
               initial={{ opacity: 0, y: 56 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.15, delay: 0.42, ease: "easeOut" }}
-              className="font-display font-black text-[clamp(3.5rem,7vw,11rem)] leading-[0.88] tracking-[-0.03em] text-foreground mb-8"
+              className="font-display font-black text-[clamp(2.8rem,8vw,11rem)] leading-[0.88] tracking-[-0.03em] text-foreground mb-8"
             >
               Venkatamani
               <br />
@@ -275,14 +273,15 @@ export default function App() {
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 1.1 }}
-              className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-[1.9] mb-14 px-4"            >
-            </motion.p>
+              className="text-muted-foreground text-[15px] sm:text-lg md:text-xl max-w-[92%] sm:max-w-2xl md:max-w-3xl mx-auto leading-[1.85] mb-12 md:mb-14">
+              
+              </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 1.28 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 w-full sm:w-auto pointer-events-auto"            >
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 w-full pointer-events-auto"            >
               <button
                 onClick={() => goto("projects")}
                 className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 shadow-[0_0_35px_rgba(56,189,248,0.35)] hover:shadow-[0_0_55px_rgba(56,189,248,0.55)] text-primary-foreground font-mono-label text-[10px] tracking-[0.28em] uppercase hover:bg-gradient-to-r from-blue-600 to-sky-400/82 transition-all duration-300 active:scale-95 cursor-pointer"
@@ -363,7 +362,7 @@ export default function App() {
             <Reveal>
               <motion.p
                 variants={fadeUp}
-                className="font-mono-label text-[10px] tracking-[0.38em] text-primary uppercase mb-12"
+                className="font-mono-label text-[10px] py-2 tracking-[0.38em] text-primary uppercase mb-12"
               >
                 01 / About
               </motion.p>
@@ -518,7 +517,7 @@ export default function App() {
                   <motion.article
                     key={p.title}
                     variants={fadeUp}
-                    className="relative bg-white/[0.03] backdrop-blur-xl border border-white/10 p-8 overflow-hidden group hover:border-blue-400/40 transition-all duration-700 ease-out hover:shadow-[0_0_45px_rgba(59,130,246,0.12)] transition-all duration-500"
+                    className="relative bg-white/[0.03] min-h-[340px] backdrop-blur-xl border border-white/10 p-8 overflow-hidden group hover:border-blue-400/40 transition-all duration-700 ease-out hover:shadow-[0_0_45px_rgba(59,130,246,0.12)] transition-all duration-500"
                   >
                     <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-r from-blue-600 to-sky-400 opacity-25 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -768,7 +767,7 @@ export default function App() {
 
               <motion.h2
                 variants={fadeUp}
-                className="font-display font-black text-[clamp(3rem,11vw,8.5rem)] text-foreground leading-[0.86] mb-5"
+                className="font-display font-black text-[clamp(2.4rem,14vw,8.5rem)] text-foreground leading-[0.86] mb-5"
               >
                 {"Let's"}
                 <br />

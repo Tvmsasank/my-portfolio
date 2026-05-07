@@ -18,4 +18,9 @@ export default defineConfig({
   },
 
   assetsInclude: ['**/*.svg', '**/*.csv'],
+
+  server: {
+    // Allow Cloudflared tunnel domains
+    allowedHosts: ['.trycloudflare.com']
+  }
 })
