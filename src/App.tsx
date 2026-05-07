@@ -320,7 +320,7 @@ export default function App() {
                   label: "LinkedIn",
                 },
                 {
-                  href: "mailto:shashank.manikanta@gmail.com",
+                  href: "https://mail.google.com/mail/?view=cm&fs=1&to=shashank.manikanta@gmail.com",
                   Icon: Mail,
                   label: "Email",
                 },
