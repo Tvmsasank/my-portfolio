@@ -11,19 +11,19 @@ pipeline {
         stage('Setup Node') {
             steps {
                 // Install Node.js 20 (requires NodeJS plugin or preinstalled Node)
-                sh 'node -v'
+                bat 'node -v'
             }
         }
 
         stage('Install dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'npm run build'
+                bat 'npm run build'
             }
         }
 
