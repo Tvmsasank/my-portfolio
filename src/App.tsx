@@ -728,7 +728,7 @@ export default function App() {
                     </div>
                     <div>
                       <h3 className="font-display text-xl text-foreground mb-2.5">
-                        <a href="https://drive.google.com/file/d/13XSPWjWpDys6UA8cnbx4o4eVrFVlrR2S/view" 
+                        <a href="https://drive.google.com/file/d/1sJGl1r5sg6ZMADBotDmLTdOU0Ch4bJAl/view?usp=sharing" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="hover:text-primary trasnsition-colors duration-300"
