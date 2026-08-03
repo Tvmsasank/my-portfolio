@@ -55,7 +55,7 @@ function Reveal({
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
-const NAV_ITEMS = ["About","Experience", "UpSkilling", "Projects", "Skills", "Contact"];
+const NAV_ITEMS = ["About", "Experience", "UpSkilling", "Projects", "Skills", "Contact"];
 
 const PROJECTS = [
   {
@@ -171,25 +171,24 @@ export default function App() {
 
       {/* ── NAV ──────────────────────────────────────────────────────────── */}
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-background/92 backdrop-blur-md border-b border-border"
-            : ""
-        }`}
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled
+          ? "bg-background/92 backdrop-blur-md border-b border-border"
+          : ""
+          }`}
       >
         <div className="max-w-9xl mx-auto px-4 sm:px-6 md:px-12 h-16 flex items-center justify-between gap-4 overflow-hidden">
-        <motion.button
-          onClick={() => goto("hero")}
-          initial={{ opacity: 0, y: -12 }}
-          animate={{
-            opacity: showNavbarName ? 1 : 0,
-            y: showNavbarName ? 0 : -12,
-          }}
-          transition={{ duration: 0.35, ease: "easeOut" }}
-          className={`font-display text-sm tracking-[0.22em] uppercase text-primary hover:opacity-70 transition-opacity cursor-pointer ${showNavbarName ? "pointer-events-auto" : "pointer-events-none"}`}
-        >
-          Venkatamani Sasank
-        </motion.button>
+          <motion.button
+            onClick={() => goto("hero")}
+            initial={{ opacity: 0, y: -12 }}
+            animate={{
+              opacity: showNavbarName ? 1 : 0,
+              y: showNavbarName ? 0 : -12,
+            }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className={`font-display text-sm tracking-[0.22em] uppercase text-primary hover:opacity-70 transition-opacity cursor-pointer ${showNavbarName ? "pointer-events-auto" : "pointer-events-none"}`}
+          >
+            Venkatamani Sasank
+          </motion.button>
           <nav className="hidden md:flex items-center gap-9">
             {NAV_ITEMS.map((n) => (
               <button
@@ -211,7 +210,7 @@ export default function App() {
         </div>
 
         {menuOpen && (
-        <div className="md:hidden bg-[#07111ff2] backdrop-blur-md border-b border-white/10 px-6 py-6 space-y-5">            
+          <div className="md:hidden bg-[#07111ff2] backdrop-blur-md border-b border-white/10 px-6 py-6 space-y-5">
             {NAV_ITEMS.map((n) => (
               <button
                 key={n}
@@ -245,12 +244,12 @@ export default function App() {
           </div>
 
           <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 overflow-hidden max-md:-mt-10">              <motion.span
-              initial={{ opacity: 0, y: -14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.25 }}
-              className="block font-mono-label text-[8px] sm:text-[10px] tracking-[0.25em] sm:tracking-[0.42em] text-primary uppercase mb-8 leading-relaxed"            >
-              AWS DevOps &nbsp;·&nbsp; .NET Developer &nbsp;·&nbsp; Hyderabad
-            </motion.span>
+            initial={{ opacity: 0, y: -14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.25 }}
+            className="block font-mono-label text-[8px] sm:text-[10px] tracking-[0.25em] sm:tracking-[0.42em] text-primary uppercase mb-8 leading-relaxed"            >
+            AWS DevOps &nbsp;·&nbsp; .NET Developer &nbsp;·&nbsp; Hyderabad
+          </motion.span>
 
             <motion.h1
               initial={{ opacity: 0, y: 56 }}
@@ -275,8 +274,8 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 1.1 }}
               className="text-muted-foreground text-[15px] sm:text-lg md:text-xl max-w-[92%] sm:max-w-2xl md:max-w-3xl mx-auto leading-[1.85] mb-12 md:mb-14">
-              
-              </motion.p>
+
+            </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 18 }}
@@ -523,7 +522,7 @@ export default function App() {
                       &nbsp;·&nbsp; ADO.NET
                       &nbsp;·&nbsp; SQL Server
                       &nbsp;·&nbsp; JavaScript
-                      &nbsp;·&nbsp; Bootstrap                    
+                      &nbsp;·&nbsp; Bootstrap
                     </p>
 
                     <span className="font-mono-label text-[11px] text-muted-foreground tracking-wider whitespace-nowrap flex-shrink-0">
@@ -561,10 +560,10 @@ export default function App() {
                 <div className="relative z-10">
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-8 pb-6 border-b border-border/40">
 
-                  <p className="font-mono-label text-[10px] tracking-wider text-muted-foreground border-border/40">
-                    Project: IRCTC Clone &nbsp;·&nbsp; C# &nbsp;·&nbsp; ASP.NET
-                    MVC &nbsp;·&nbsp; Visual Studio 2022
-                  </p>
+                    <p className="font-mono-label text-[10px] tracking-wider text-muted-foreground border-border/40">
+                      Project: IRCTC Clone &nbsp;·&nbsp; C# &nbsp;·&nbsp; ASP.NET
+                      MVC &nbsp;·&nbsp; Visual Studio 2022
+                    </p>
 
                     <span className="font-mono-label text-[11px] text-muted-foreground tracking-wider whitespace-nowrap flex-shrink-0">
                       Sep 2025 — Mar 2026
@@ -646,23 +645,23 @@ export default function App() {
         >
           <div className="max-w-7xl mx-auto">
             <Reveal>
-                <motion.p
-                  variants={fadeUp}
-                  className="font-mono-label text-[10px] tracking-[0.38em] text-primary uppercase mb-11"
-                >
-                  03 / UpSkilling
-                </motion.p>
+              <motion.p
+                variants={fadeUp}
+                className="font-mono-label text-[10px] tracking-[0.38em] text-primary uppercase mb-11"
+              >
+                03 / UpSkilling
+              </motion.p>
 
-                <motion.h2
-                  variants={fadeUp}
-                  className="font-display text-4xl md:text-6xl text-foreground mb-13"
-                >
-                  Learning Journey
-                </motion.h2>
+              <motion.h2
+                variants={fadeUp}
+                className="font-display text-4xl md:text-6xl text-foreground mb-13"
+              >
+                Learning Journey
+              </motion.h2>
 
               <motion.div
-                variants =  {fadeUp}
-                className = "max-w-4xl mx-auto text-left"
+                variants={fadeUp}
+                className="max-w-4xl mx-auto text-left"
               >
 
               </motion.div>
@@ -682,7 +681,7 @@ export default function App() {
                 </div>
 
                 <div className="space-y-5 text-muted-foreground text-base md:text-lg leading-relaxed">
-                  
+
                   <div className="border-l border-primary/40 pl-5 mb-1 text-2xl">
                     <span className="text-foreground font-semibold">1.</span>{" "}
                     Created a freestyle Jenkins CI/CD pipeline integrated with Maven,
@@ -938,12 +937,12 @@ export default function App() {
 
                 {/* Certification */}
                 <div className="md:col-span-2 mt-10">
-                <motion.h2
-                  variants={fadeUp}
-                  className="font-display text-3xl md:text-5xl text-foreground mb-10"
-                >
-                  Certifications
-                </motion.h2>
+                  <motion.h2
+                    variants={fadeUp}
+                    className="font-display text-3xl md:text-5xl text-foreground mb-10"
+                  >
+                    Certifications
+                  </motion.h2>
                 </div>
 
                 <motion.div
@@ -960,10 +959,10 @@ export default function App() {
                     </div>
                     <div>
                       <h3 className="font-display text-xl text-foreground mb-2.5">
-                        <a href="https://drive.google.com/file/d/1sJGl1r5sg6ZMADBotDmLTdOU0Ch4bJAl/view?usp=sharing" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="hover:text-primary trasnsition-colors duration-300"
+                        <a href="https://drive.google.com/file/d/1FclZdwQ_C3EuhycADdqaWnTiVND22uMu/view?usp=drive_link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-primary trasnsition-colors duration-300"
                         >
                           AWS DevOps Certifications</a>
                       </h3>
