@@ -176,6 +176,37 @@ const SKILLS = [
   { cat: "Tools", items: ["Visual Studio 2022", "VSCode", "Antigravity"] },
 ];
 
+const CERTIFICATIONS = [
+  {
+    title: "AWS SimuLearn: Cloud Practitioner",
+    issuer: "Amazon Web Services",
+    link: "https://drive.google.com/file/d/1Lv66trIUmbu9EpK5dKhIqA-d6vKK_rpA/view?usp=drive_link",
+    description:
+      "Hands-on simulated cloud practitioner training and validation on core AWS architecture and services.",
+  },
+  {
+    title: "AWS Cloud Practitioner Essentials",
+    issuer: "Amazon Web Services",
+    link: "https://drive.google.com/file/d/1RQyQcSBaOCrfJq9nTjPioBIhu2rOennC/view?usp=drive_link",
+    description:
+      "Comprehensive foundation in AWS cloud concepts, security best practices, core services, and pricing.",
+  },
+  {
+    title: "AWS Solutions Architect - Fundamentals of Architecting on AWS",
+    issuer: "Amazon Web Services",
+    link: "https://drive.google.com/file/d/1GMhUlLgNEfgMZYcnFACncIJMcv9d3-U1/view?usp=drive_link",
+    description:
+      "Architectural principles, high availability, decoupled systems, resilience, and scalable cloud design.",
+  },
+  {
+    title: "AWS DevOps Certificate",
+    issuer: "Amazon Web Services",
+    link: "https://drive.google.com/file/d/1jGDuMcJ_HnjEEUB6f46VuHrTVvHoFCoh/view?usp=drive_link",
+    description:
+      "DevOps practices, CI/CD pipeline automation, infrastructure provisioning, and continuous monitoring.",
+  },
+];
+
 const FLOATING_TECH = [
   "AWS",
   "Docker",
@@ -985,7 +1016,7 @@ export default function App() {
                 </motion.div>
 
                 {/* Certification */}
-                <div className="md:col-span-2 mt-10">
+                <div className="md:col-span-2 mt-12">
                   <motion.h2
                     variants={fadeUp}
                     className="font-display text-3xl md:text-5xl text-foreground mb-10"
@@ -994,34 +1025,74 @@ export default function App() {
                   </motion.h2>
                 </div>
 
-                <motion.div
-                  variants={fadeUp}
-                  className="md:col-span-2 relative bg-card border border-border/60 p-8 overflow-hidden group hover:border-primary/25 transition-all duration-500"
-                >
-                  <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-r from-blue-600 to-sky-400/40" />
-                  <span className="block font-mono-label text-[9px] tracking-[0.3em] text-primary uppercase mb-6">
-                    Certification
-                  </span>
-                  <div className="flex items-start gap-5">
-                    <div className="w-12 h-12 border border-primary/30 flex items-center justify-center flex-shrink-0 bg-gradient-to-r from-blue-600 to-sky-400/6">
-                      <Award size={18} className="text-primary" />
-                    </div>
+                {/* 
+                  Commented previous single certificate drive link as requested:
+                  https://drive.google.com/file/d/1FclZdwQ_C3EuhycADdqaWnTiVND22uMu/view?usp=drive_link
+                */}
+
+                {CERTIFICATIONS.map((cert) => (
+                  <motion.div
+                    key={cert.title}
+                    variants={fadeUp}
+                    className="relative bg-card border border-border/60 p-7 sm:p-8 overflow-hidden group hover:border-primary/40 transition-all duration-500 flex flex-col justify-between"
+                  >
+                    <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-r from-blue-600 to-sky-400 opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+
                     <div>
-                      <h3 className="font-display text-xl text-foreground mb-2.5">
-                        <a href="https://drive.google.com/file/d/1FclZdwQ_C3EuhycADdqaWnTiVND22uMu/view?usp=drive_link"
+                      <div className="flex items-center justify-between gap-3 mb-5">
+                        <span className="font-mono-label text-[9px] tracking-[0.3em] text-primary uppercase">
+                          {cert.issuer}
+                        </span>
+                        <a
+                          href={cert.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="hover:text-primary trasnsition-colors duration-300"
+                          aria-label={`Verify ${cert.title}`}
+                          className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 font-mono-label text-[10px] tracking-wider"
                         >
-                          AWS DevOps Certifications</a>
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        Certified in AWS cloud services, DevOps tooling, and
-                        cloud-native infrastructure design and automation.
+                          <span>Credential</span>
+                          <ExternalLink size={12} />
+                        </a>
+                      </div>
+
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className="w-10 h-10 border border-primary/30 flex items-center justify-center flex-shrink-0 bg-gradient-to-r from-blue-600/10 to-sky-400/10 text-primary group-hover:scale-105 transition-transform duration-300">
+                          <Award size={18} />
+                        </div>
+                        <div>
+                          <h3 className="font-display text-lg sm:text-xl text-foreground group-hover:text-primary transition-colors leading-snug">
+                            <a
+                              href={cert.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:underline underline-offset-4 decoration-primary/40"
+                            >
+                              {cert.title}
+                            </a>
+                          </h3>
+                        </div>
+                      </div>
+
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                        {cert.description}
                       </p>
                     </div>
-                  </div>
-                </motion.div>
+
+                    <div className="pt-4 border-t border-border/40 flex items-center justify-between">
+                      <span className="font-mono-label text-[10px] text-muted-foreground tracking-wider">
+                        Verified Credential
+                      </span>
+                      <a
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-mono-label text-[11px] text-primary hover:text-sky-300 transition-colors flex items-center gap-1.5 font-medium"
+                      >
+                        View Certificate <ExternalLink size={11} />
+                      </a>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </Reveal>
           </div>
