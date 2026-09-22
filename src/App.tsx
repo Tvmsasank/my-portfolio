@@ -107,6 +107,63 @@ const PROJECTS = [
   },
 ];
 
+const UPSKILLING = [
+  {
+    number: "1.",
+    title: "CloudOps Deployment Platform — AWS CI/CD",
+    tagline: "End-to-End AWS DevOps & CI/CD",
+    headline:
+      "Built an end-to-end AWS DevOps deployment platform integrating GitHub, Linux, AWS infrastructure, IAM, S3, and GitHub Actions CI/CD.",
+    bullets: [
+      "Provisioned and configured an Amazon Linux EC2 environment with SSH, Nginx, Linux users, permissions, services, and deployment directories.",
+      "Configured AWS IAM roles and EC2 instance profiles to securely access AWS services without embedding long-lived credentials on the server.",
+      "Implemented Amazon S3 as a versioned deployment artifact repository for storing application ZIP packages.",
+      "Built Bash-based deployment automation with backup handling, Linux permission management, Nginx configuration validation, service reloads, and application health checks.",
+      "Developed GitHub Actions workflows for automated source checkout, artifact packaging, AWS authentication, S3 uploads, and deployment artifact verification.",
+      "Implemented GitHub Actions OIDC federation with AWS IAM, eliminating the need to store long-lived AWS access keys in GitHub.",
+      "Restricted AWS OIDC trust policies to the specific GitHub repository and main branch using repository and owner identity claims.",
+      "Implemented Git commit SHA-based artifact versioning to establish traceability between source commits, CI/CD runs, and deployment packages.",
+      "Prepared the application for AWS CodeDeploy using an AppSpec deployment specification and CodeDeploy agent, establishing a foundation for automated EC2 deployments.",
+    ],
+    stack: [
+      "AWS EC2",
+      "Amazon S3",
+      "AWS IAM",
+      "GitHub Actions",
+      "OIDC Federation",
+      "Bash Scripting",
+      "Nginx",
+      "AWS CodeDeploy",
+      "Linux",
+    ],
+  },
+  {
+    number: "2.",
+    title: "Jenkins CI/CD Pipeline with Maven",
+    tagline: "Hands-on DevOps Practice",
+    headline:
+      "Created a freestyle Jenkins CI/CD pipeline integrated with Maven.",
+    bullets: [
+      "Installed required Jenkins plugins and connected GitHub repository.",
+      "Configured Jenkins inside Docker container and managed workspace execution using bash shell.",
+      "Configured Maven goals for clean, build, package, and artifact generation (.jar).",
+      "Executed Maven test phase and generated Surefire test reports.",
+      "Added execute shell scripts to run generated Java artifacts from Jenkins workspace.",
+      "Published JUnit reports and validated pipeline builds multiple times for reporting accuracy.",
+    ],
+    stack: [
+      "Jenkins",
+      "Docker",
+      "Maven",
+      "GitHub",
+      "Bash Shell",
+      "JUnit",
+      "Surefire Reports",
+      "Java",
+    ],
+  },
+];
+
 const SKILLS = [
   {
     cat: "Cloud / AWS",
@@ -654,148 +711,63 @@ export default function App() {
 
               <motion.h2
                 variants={fadeUp}
-                className="font-display text-4xl md:text-6xl text-foreground mb-13"
+                className="font-display text-4xl md:text-6xl text-foreground mb-14"
               >
                 Learning Journey
               </motion.h2>
 
-              <motion.div
-                variants={fadeUp}
-                className="max-w-4xl mx-auto text-left"
-              >
+              <div className="space-y-12 max-w-4xl mx-auto">
+                {UPSKILLING.map((item) => (
+                  <motion.div
+                    key={item.title}
+                    variants={fadeUp}
+                    className="relative bg-card border border-border/60 p-7 sm:p-9 md:p-11 overflow-hidden group hover:border-primary/25 transition-all duration-500"
+                  >
+                    <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-r from-blue-600 to-sky-400" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-600 pointer-events-none" />
 
-              </motion.div>
+                    <div className="relative z-10">
+                      <div className="mb-6 pb-5 border-b border-border/40">
+                        <p className="text-primary font-mono-label tracking-[0.2em] uppercase text-xs mb-2.5">
+                          {item.tagline}
+                        </p>
+                        <h3 className="font-display text-2xl sm:text-3xl text-foreground font-semibold">
+                          {item.title}
+                        </h3>
+                      </div>
 
-              <motion.div
-                variants={fadeUp}
-                className="max-w-4xl mx-auto text-left"
-              >
-                <div className="mb-8">
-                  <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
-                    CloudOps Deployment Platform — AWS CI/CD
-                  </h3>
+                      <div className="border-l-2 border-primary/70 pl-4 py-2 text-base sm:text-lg text-foreground font-medium mb-6 bg-primary/[0.04]">
+                        <span className="text-primary font-bold mr-1.5">{item.number}</span>{" "}
+                        {item.headline}
+                      </div>
 
-                  <p className="text-primary font-mono-label tracking-[0.18em] uppercase text-xs">
-                    End-to-End AWS DevOps & CI/CD
-                  </p>
-                </div>
+                      <ul className="space-y-3.5 pl-1 sm:pl-2 mb-7">
+                        {item.bullets.map((b, i) => (
+                          <li key={i} className="flex items-start gap-3.5 text-muted-foreground text-sm sm:text-base leading-relaxed">
+                            <span className="text-primary font-bold flex-shrink-0 select-none mt-[1px]">
+                              –
+                            </span>
+                            <span className="flex-1 text-muted-foreground/90">
+                              {b}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
 
-                <div className="space-y-5 text-muted-foreground text-base md:text-lg leading-relaxed">
-
-                  <div className="border-l border-primary/40 pl-5 mb-1 text-2xl">
-                    <span className="text-foreground font-semibold">2.</span>{" "}
-                    Built an end-to-end AWS DevOps deployment platform integrating GitHub,
-                    Linux, AWS infrastructure, IAM, S3, and GitHub Actions CI/CD.
-                  </div>
-
-                  <div className="pl-10 mb-1">
-                    <span className="text-foreground font-semibold">-</span>{" "}
-                    Provisioned and configured an Amazon Linux EC2 environment with SSH,
-                    Nginx, Linux users, permissions, services, and deployment directories.
-                  </div>
-
-                  <div className="pl-10 mb-1">
-                    <span className="text-foreground font-semibold">-</span>{" "}
-                    Configured AWS IAM roles and EC2 instance profiles to securely access
-                    AWS services without embedding long-lived credentials on the server.
-                  </div>
-
-                  <div className="pl-10 mb-1">
-                    <span className="text-foreground font-semibold">-</span>{" "}
-                    Implemented Amazon S3 as a versioned deployment artifact repository
-                    for storing application ZIP packages.
-                  </div>
-
-                  <div className="pl-10 mb-1">
-                    <span className="text-foreground font-semibold">-</span>{" "}
-                    Built Bash-based deployment automation with backup handling,
-                    Linux permission management, Nginx configuration validation,
-                    service reloads, and application health checks.
-                  </div>
-
-                  <div className="pl-10 mb-1">
-                    <span className="text-foreground font-semibold">-</span>{" "}
-                    Developed GitHub Actions workflows for automated source checkout,
-                    artifact packaging, AWS authentication, S3 uploads, and deployment
-                    artifact verification.
-                  </div>
-
-                  <div className="pl-10 mb-1">
-                    <span className="text-foreground font-semibold">-</span>{" "}
-                    Implemented GitHub Actions OIDC federation with AWS IAM,
-                    eliminating the need to store long-lived AWS access keys in GitHub.
-                  </div>
-
-                  <div className="pl-10 mb-1">
-                    <span className="text-foreground font-semibold">-</span>{" "}
-                    Restricted AWS OIDC trust policies to the specific GitHub repository
-                    and main branch using repository and owner identity claims.
-                  </div>
-
-                  <div className="pl-10 mb-1">
-                    <span className="text-foreground font-semibold">-</span>{" "}
-                    Implemented Git commit SHA-based artifact versioning to establish
-                    traceability between source commits, CI/CD runs, and deployment packages.
-                  </div>
-
-                  <div className="pl-10">
-                    <span className="text-foreground font-semibold">-</span>{" "}
-                    Prepared the application for AWS CodeDeploy using an AppSpec deployment
-                    specification and CodeDeploy agent, establishing a foundation for
-                    automated EC2 deployments.
-                  </div>
-
-                </div>
-
-                <div className="mb-8">
-                  <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
-                    Jenkins CI/CD Pipeline with Maven
-                  </h3>
-
-                  <p className="text-primary font-mono-label tracking-[0.18em] uppercase text-xs">
-                    Hands-on DevOps Practice
-                  </p>
-                </div>
-
-                <div className="space-y-5 text-muted-foreground text-base md:text-lg leading-relaxed">
-
-                  <div className="border-l border-primary/40 pl-5 mb-1 text-2xl">
-                    <span className="text-foreground font-semibold">1.</span>{" "}
-                    Created a freestyle Jenkins CI/CD pipeline integrated with Maven,
-                  </div>
-
-                  <div className="pl-10 mb-1">
-                    <span className="text-foreground font-semibold">-</span>{" "}
-                    Installed required Jenkins plugins and connected GitHub repository.
-                  </div>
-
-                  <div className="pl-10 mb-1">
-                    <span className="text-foreground font-semibold">-</span>{" "}
-                    Configured Jenkins inside Docker container and managed workspace execution using bash shell.
-                  </div>
-
-                  <div className="pl-10 mb-1">
-                    <span className="text-foreground font-semibold">-</span>{" "}
-                    Configured Maven goals for clean, build, package, and artifact generation (.jar).
-                  </div>
-
-                  <div className="pl-10 mb-1">
-                    <span className="text-foreground font-semibold">-</span>{" "}
-                    Executed Maven test phase and generated Surefire test reports.
-                  </div>
-
-                  <div className="pl-10 mb-1">
-                    <span className="text-foreground font-semibold">-</span>{" "}
-                    Added execute shell scripts to run generated Java artifacts from Jenkins workspace.
-                  </div>
-
-                  <div className="pl-10">
-                    <span className="text-foreground font-semibold">-</span>{" "}
-                    Published JUnit reports and validated pipeline builds multiple times for reporting accuracy.
-                  </div>
-
-                </div>
-              </motion.div>
+                      <div className="flex flex-wrap gap-1.5 pt-5 border-t border-border/40">
+                        {item.stack.map((s) => (
+                          <span
+                            key={s}
+                            className="px-2.5 py-1 font-mono-label text-[10px] tracking-wider bg-secondary/90 text-muted-foreground border border-border/30"
+                          >
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </Reveal>
           </div>
         </section>
