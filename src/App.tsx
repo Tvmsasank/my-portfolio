@@ -672,6 +672,83 @@ export default function App() {
               >
                 <div className="mb-8">
                   <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
+                    CloudOps Deployment Platform — AWS CI/CD
+                  </h3>
+
+                  <p className="text-primary font-mono-label tracking-[0.18em] uppercase text-xs">
+                    End-to-End AWS DevOps & CI/CD
+                  </p>
+                </div>
+
+                <div className="space-y-5 text-muted-foreground text-base md:text-lg leading-relaxed">
+
+                  <div className="border-l border-primary/40 pl-5 mb-1 text-2xl">
+                    <span className="text-foreground font-semibold">2.</span>{" "}
+                    Built an end-to-end AWS DevOps deployment platform integrating GitHub,
+                    Linux, AWS infrastructure, IAM, S3, and GitHub Actions CI/CD.
+                  </div>
+
+                  <div className="pl-10 mb-1">
+                    <span className="text-foreground font-semibold">-</span>{" "}
+                    Provisioned and configured an Amazon Linux EC2 environment with SSH,
+                    Nginx, Linux users, permissions, services, and deployment directories.
+                  </div>
+
+                  <div className="pl-10 mb-1">
+                    <span className="text-foreground font-semibold">-</span>{" "}
+                    Configured AWS IAM roles and EC2 instance profiles to securely access
+                    AWS services without embedding long-lived credentials on the server.
+                  </div>
+
+                  <div className="pl-10 mb-1">
+                    <span className="text-foreground font-semibold">-</span>{" "}
+                    Implemented Amazon S3 as a versioned deployment artifact repository
+                    for storing application ZIP packages.
+                  </div>
+
+                  <div className="pl-10 mb-1">
+                    <span className="text-foreground font-semibold">-</span>{" "}
+                    Built Bash-based deployment automation with backup handling,
+                    Linux permission management, Nginx configuration validation,
+                    service reloads, and application health checks.
+                  </div>
+
+                  <div className="pl-10 mb-1">
+                    <span className="text-foreground font-semibold">-</span>{" "}
+                    Developed GitHub Actions workflows for automated source checkout,
+                    artifact packaging, AWS authentication, S3 uploads, and deployment
+                    artifact verification.
+                  </div>
+
+                  <div className="pl-10 mb-1">
+                    <span className="text-foreground font-semibold">-</span>{" "}
+                    Implemented GitHub Actions OIDC federation with AWS IAM,
+                    eliminating the need to store long-lived AWS access keys in GitHub.
+                  </div>
+
+                  <div className="pl-10 mb-1">
+                    <span className="text-foreground font-semibold">-</span>{" "}
+                    Restricted AWS OIDC trust policies to the specific GitHub repository
+                    and main branch using repository and owner identity claims.
+                  </div>
+
+                  <div className="pl-10 mb-1">
+                    <span className="text-foreground font-semibold">-</span>{" "}
+                    Implemented Git commit SHA-based artifact versioning to establish
+                    traceability between source commits, CI/CD runs, and deployment packages.
+                  </div>
+
+                  <div className="pl-10">
+                    <span className="text-foreground font-semibold">-</span>{" "}
+                    Prepared the application for AWS CodeDeploy using an AppSpec deployment
+                    specification and CodeDeploy agent, establishing a foundation for
+                    automated EC2 deployments.
+                  </div>
+
+                </div>
+
+                <div className="mb-8">
+                  <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
                     Jenkins CI/CD Pipeline with Maven
                   </h3>
 
