@@ -12,9 +12,6 @@ import {
   X,
   Award,
 } from "lucide-react";
-import SpotlightCard from "./app/components/SpotlightCard";
-import CloudPipelineWidget from "./app/components/CloudPipelineWidget";
-import DevOpsTerminal from "./app/components/DevOpsTerminal";
 
 // ── Animation Variants ───────────────────────────────────────────────────────
 
@@ -229,22 +226,6 @@ export default function App() {
         .font-mono-label { font-family: "JetBrains Mono", ui-monospace, monospace; }
       `}</style>
 
-      {/* Ambient Animated Glowing Mesh Orbs */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div
-          className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-blue-600/10 blur-[150px] animate-pulse"
-          style={{ animationDuration: "9s" }}
-        />
-        <div
-          className="absolute top-1/3 -right-40 w-[550px] h-[550px] rounded-full bg-cyan-500/10 blur-[160px] animate-pulse"
-          style={{ animationDuration: "12s" }}
-        />
-        <div
-          className="absolute bottom-10 left-1/4 w-[500px] h-[500px] rounded-full bg-indigo-500/10 blur-[150px] animate-pulse"
-          style={{ animationDuration: "10s" }}
-        />
-      </div>
-
       {/* ── NAV ──────────────────────────────────────────────────────────── */}
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled
@@ -349,20 +330,18 @@ export default function App() {
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 1.1 }}
-              className="text-muted-foreground text-[15px] sm:text-lg md:text-xl max-w-[92%] sm:max-w-2xl md:max-w-3xl mx-auto leading-[1.85] mb-12 md:mb-14"
-            >
-              Engineering resilient cloud architectures, secretless CI/CD pipelines, and automated infrastructure on AWS.
+              className="text-muted-foreground text-[15px] sm:text-lg md:text-xl max-w-[92%] sm:max-w-2xl md:max-w-3xl mx-auto leading-[1.85] mb-12 md:mb-14">
+
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 1.28 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14 w-full pointer-events-auto"
-            >
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 w-full pointer-events-auto"            >
               <button
                 onClick={() => goto("projects")}
-                className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 shadow-[0_0_35px_rgba(56,189,248,0.35)] hover:shadow-[0_0_55px_rgba(56,189,248,0.55)] text-primary-foreground font-mono-label text-[10px] tracking-[0.28em] uppercase hover:opacity-95 transition-all duration-300 active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 shadow-[0_0_35px_rgba(56,189,248,0.35)] hover:shadow-[0_0_55px_rgba(56,189,248,0.55)] text-primary-foreground font-mono-label text-[10px] tracking-[0.28em] uppercase hover:bg-gradient-to-r from-blue-600 to-sky-400/82 transition-all duration-300 active:scale-95 cursor-pointer"
               >
                 View Projects
               </button>
@@ -377,8 +356,8 @@ export default function App() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1.45 }}
-              className="flex items-center justify-center gap-7 mb-14 pointer-events-auto"
+              transition={{ delay: 1.55 }}
+              className="flex items-center justify-center gap-7 pointer-events-auto"
             >
               {[
                 {
@@ -413,16 +392,6 @@ export default function App() {
                 </a>
               ))}
             </motion.div>
-
-            {/* Interactive Cloud CI/CD Architecture Flow & Live Telemetry Widget */}
-            <motion.div
-              initial={{ opacity: 0, y: 32 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, delay: 1.6 }}
-              className="w-full max-w-4xl mx-auto pointer-events-auto text-left"
-            >
-              <CloudPipelineWidget />
-            </motion.div>
           </div>
 
           <motion.button
@@ -430,7 +399,7 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.9 }}
-            className="mt-14 flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors pointer-events-auto cursor-pointer"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors pointer-events-auto"
           >
             <span className="font-mono-label text-[9px] tracking-[0.42em] uppercase">
               Scroll
@@ -749,12 +718,17 @@ export default function App() {
 
               <div className="space-y-12 max-w-4xl mx-auto">
                 {UPSKILLING.map((item) => (
-                  <motion.div key={item.title} variants={fadeUp}>
-                    <SpotlightCard className="p-7 sm:p-9 md:p-11 border-border/70 hover:border-primary/40">
-                      <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-r from-blue-600 to-sky-400 z-20" />
+                  <motion.div
+                    key={item.title}
+                    variants={fadeUp}
+                    className="relative bg-card border border-border/60 p-7 sm:p-9 md:p-11 overflow-hidden group hover:border-primary/25 transition-all duration-500"
+                  >
+                    <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-r from-blue-600 to-sky-400" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-600 pointer-events-none" />
 
+                    <div className="relative z-10">
                       <div className="mb-6 pb-5 border-b border-border/40">
-                        <p className="text-primary font-mono-label tracking-[0.2em] uppercase text-xs mb-2.5 font-medium">
+                        <p className="text-primary font-mono-label tracking-[0.2em] uppercase text-xs mb-2.5">
                           {item.tagline}
                         </p>
                         <h3 className="font-display text-2xl sm:text-3xl text-foreground font-semibold">
@@ -762,7 +736,7 @@ export default function App() {
                         </h3>
                       </div>
 
-                      <div className="border-l-2 border-primary/70 pl-4 py-2 text-base sm:text-lg text-foreground font-medium mb-6 bg-primary/[0.04] rounded-r">
+                      <div className="border-l-2 border-primary/70 pl-4 py-2 text-base sm:text-lg text-foreground font-medium mb-6 bg-primary/[0.04]">
                         <span className="text-primary font-bold mr-1.5">{item.number}</span>{" "}
                         {item.headline}
                       </div>
@@ -784,28 +758,15 @@ export default function App() {
                         {item.stack.map((s) => (
                           <span
                             key={s}
-                            className="px-2.5 py-1 font-mono-label text-[10px] tracking-wider bg-secondary/90 text-muted-foreground border border-border/30 rounded-xs"
+                            className="px-2.5 py-1 font-mono-label text-[10px] tracking-wider bg-secondary/90 text-muted-foreground border border-border/30"
                           >
                             {s}
                           </span>
                         ))}
                       </div>
-                    </SpotlightCard>
+                    </div>
                   </motion.div>
                 ))}
-
-                {/* Interactive DevOps Terminal */}
-                <motion.div variants={fadeUp} className="pt-8">
-                  <div className="mb-5 text-left">
-                    <p className="text-primary font-mono-label tracking-[0.22em] uppercase text-xs mb-1.5 font-medium">
-                      Interactive DevOps Playground
-                    </p>
-                    <h3 className="font-display text-xl sm:text-2xl text-foreground font-semibold">
-                      Production IaC, Workflows &amp; Automation
-                    </h3>
-                  </div>
-                  <DevOpsTerminal />
-                </motion.div>
               </div>
             </Reveal>
           </div>
@@ -833,16 +794,21 @@ export default function App() {
 
               <div className="grid md:grid-cols-2 gap-5">
                 {PROJECTS.map((p) => (
-                  <motion.div key={p.title} variants={fadeUp}>
-                    <SpotlightCard className="p-8 min-h-[340px] border-border/70 hover:border-primary/40 transition-all duration-500">
-                      <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-r from-blue-600 to-sky-400 opacity-40 group-hover:opacity-100 transition-opacity duration-500 z-20" />
+                  <motion.article
+                    key={p.title}
+                    variants={fadeUp}
+                    className="relative bg-white/[0.03] min-h-[340px] backdrop-blur-xl border border-white/10 p-8 overflow-hidden group hover:border-blue-400/40 transition-all duration-700 ease-out hover:shadow-[0_0_45px_rgba(59,130,246,0.12)] transition-all duration-500"
+                  >
+                    <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-r from-blue-600 to-sky-400 opacity-25 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
+                    <div className="relative z-10">
                       <div className="flex items-start justify-between gap-3 mb-5">
                         <div>
                           <span className="block font-mono-label text-[9px] tracking-[0.32em] text-muted-foreground/70 uppercase mb-2">
                             {p.type}
                           </span>
-                          <h3 className="font-display text-xl text-foreground font-semibold">
+                          <h3 className="font-display text-xl text-foreground">
                             {p.title}
                           </h3>
                         </div>
@@ -867,7 +833,7 @@ export default function App() {
                       <ul className="space-y-2.5 mb-6">
                         {p.bullets.map((b, i) => (
                           <li key={i} className="flex items-start gap-2.5">
-                            <span className="text-primary/70 text-[7px] mt-[7px] flex-shrink-0">
+                            <span className="text-primary/45 text-[7px] mt-[7px] flex-shrink-0">
                               ●
                             </span>
                             <span className="text-muted-foreground text-sm leading-relaxed">
@@ -881,14 +847,14 @@ export default function App() {
                         {p.stack.map((s) => (
                           <span
                             key={s}
-                            className="px-2 py-0.5 font-mono-label text-[9px] tracking-wide bg-secondary/80 text-muted-foreground border border-border/20 rounded-xs"
+                            className="px-2 py-0.5 font-mono-label text-[9px] tracking-wide bg-secondary text-muted-foreground"
                           >
                             {s}
                           </span>
                         ))}
                       </div>
-                    </SpotlightCard>
-                  </motion.div>
+                    </div>
+                  </motion.article>
                 ))}
               </div>
             </Reveal>
