@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight, ChevronRight, Command, Github, Linkedin, Mail, Terminal as TerminalIcon } from "lucide-react";
 import { useTerminal } from "../hooks/useTerminal";
+import { NetworkCanvas } from "./NetworkCanvas";
 
 type Props = {
   onProjectSelect?: (id: string) => void;
@@ -17,6 +18,7 @@ export function TerminalShell({ onProjectSelect, onBrowseProjects }: Props) {
 
   return (
     <section className="terminal-stage" id="top">
+      <NetworkCanvas />
       <div className="terminal-stage-grid" aria-hidden="true" />
       <header className="site-strip">
         <a className="wordmark" href="#top" onClick={(event) => { event.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}><span className="wordmark-mark">V.</span> VENKATAMANI <span className="wordmark-slash">/</span> SASANK</a>
@@ -27,7 +29,11 @@ export function TerminalShell({ onProjectSelect, onBrowseProjects }: Props) {
         <aside className="identity-rail">
           <div className="rail-index">ENGINEERING PORTFOLIO <span>2026 / 01</span></div>
           <p className="eyebrow">AWS CLOUD / DEVOPS / .NET</p>
-          <h1 className="identity-title">Build.<br /><span>Ship.</span><br />Improve.</h1>
+          <h1 className="identity-title">
+            <span className="hero-word-build">Build.</span><br />
+            <span className="hero-word-ship">Ship.</span><br />
+            <span className="hero-word-improve">Improve.</span>
+          </h1>
           <p className="identity-copy">I'm <strong>Venkatamani Sasank</strong> — a Software Developer working across AWS cloud, DevOps automation and .NET application engineering.</p>
           <div className="identity-rule" />
           <div className="identity-meta"><span>ENGINEERING FOCUS</span><strong>AWS CLOUD<br />CI/CD &amp; AUTOMATION<br />.NET SYSTEMS</strong></div>
