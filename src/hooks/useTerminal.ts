@@ -41,10 +41,10 @@ export function useTerminal(onProjectSelect?: ProjectSelectCallback) {
     const command = raw.trim();
     if (!command) return;
     if (command.toLowerCase() === "clear") { setOutputs([]); setInput(""); setHistory((current) => [...current, command]); setHistoryIndex(-1); return; }
-    const result = resolveCommand(command, onNavigate);
+    const result = resolveCommand(command, onProjectSelect);
     setOutputs((current) => [...current, { id: nextId, command, ...result }]);
     setNextId((id) => id + 1); setHistory((current) => [...current, command]); setHistoryIndex(-1); setInput("");
-  }, [nextId, onNavigate]);
+  }, [nextId, onProjectSelect]);
   const onKeyDown = useCallback((event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") { event.preventDefault(); execute(input); }
     else if (event.key === "ArrowUp") { event.preventDefault(); if (!history.length) return; const index = historyIndex < 0 ? history.length - 1 : Math.max(0, historyIndex - 1); setHistoryIndex(index); setInput(history[index]); }
