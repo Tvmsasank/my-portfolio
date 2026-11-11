@@ -3,9 +3,9 @@ import { COMMANDS, PROJECT_DIRECTORIES } from "../data/commands";
 import { CERTIFICATIONS, EXPERIENCE, PROJECTS, SKILL_GROUPS } from "../data/portfolio";
 
 export type OutputBlock = { id: number; command: string; lines: string[]; tone?: "normal" | "accent" | "error" | "success" };
-type Navigate = (id: string) => void;
+type ProjectSelectCallback = (id: string) => void;
 
-function resolveCommand(raw: string, navigate?: Navigate): { lines: string[]; tone?: OutputBlock["tone"] } {
+function resolveCommand(raw: string, onProjectSelect?: ProjectSelectCallback): { lines: string[]; tone?: OutputBlock["tone"] } {
   const command = raw.trim().replace(/\s+/g, " ");
   const lower = command.toLowerCase();
   if (!command) return { lines: [] };
@@ -18,19 +18,19 @@ function resolveCommand(raw: string, navigate?: Navigate): { lines: string[]; to
     const projectId = aliases[id] ?? id;
     const project = PROJECTS.find((item) => item.id === projectId);
     if (!project) return { tone: "error", lines: [`unknown project: ${id}`, "Try: open cloudops | bluegreen | refund | irctc | rag | sriaditya | jenkins | aws3tier | question-system"] };
-    navigate?.(projectId);
+    onProjectSelect?.(projectId);
     return { tone: "accent", lines: [`${project.number} / ${project.title.toUpperCase()}`, project.category, project.period, "", project.summary, "", "IMPLEMENTATION", ...project.implementation.map((line) => `  • ${line}`), "", "STACK", `  ${project.stack.join(" · ")}`, "", "The full case study is expanded in the Projects section below."] };
   }
   if (lower === "cat skills.txt" || lower === "skills") return { lines: ["TECHNICAL TOOLKIT", "", ...SKILL_GROUPS.flatMap((group) => [`${group.title.toUpperCase()}`, `  ${group.skills.join(" · ")}`, ""])] };
-  if (lower === "show experience" || lower === "./experience.sh" || lower === "experience") { navigate?.("experience"); return { tone: "accent", lines: ["CAREER", ...EXPERIENCE.flatMap((job) => [job.role, `${job.company} · ${job.location}`, job.period, job.description, ...job.highlights.map((line) => `  • ${line}`), ""])] }; }
-  if (lower === "show education" || lower === "education") { navigate?.("education"); return { lines: ["EDUCATION", ...["Master of Computer Applications — RG Kedia College of Commerce (2022–2024), CGPA 7.67", "Bachelor of Science (MECs) — institution and dates not present in the source portfolio", "", "AWS CERTIFICATES", ...CERTIFICATIONS.map((cert) => `  ${cert.title} · ${cert.issuer}`)]] }; }
-  if (lower === "contact" || lower === "contact --open") { navigate?.("contact"); return { tone: "accent", lines: ["CONTACT CHANNELS", "Email    shashank.manikanta@gmail.com", "GitHub   github.com/Tvmsasank", "LinkedIn linkedin.com/in/venkatamani-sasank", "Location Hyderabad, India", "", "Use the contact links in the page to open these channels."] }; }
+  if (lower === "show experience" || lower === "./experience.sh" || lower === "experience") { return { tone: "accent", lines: ["CAREER", ...EXPERIENCE.flatMap((job) => [job.role, `${job.company} · ${job.location}`, job.period, job.description, ...job.highlights.map((line) => `  • ${line}`), ""])] }; }
+  if (lower === "show education" || lower === "education") { return { lines: ["EDUCATION", ...["Master of Computer Applications — RG Kedia College of Commerce (2022–2024), CGPA 7.67", "Bachelor of Science (MECs) — institution and dates not present in the source portfolio", "", "AWS CERTIFICATES", ...CERTIFICATIONS.map((cert) => `  ${cert.title} · ${cert.issuer}`)]] }; }
+  if (lower === "contact" || lower === "contact --open") { return { tone: "accent", lines: ["CONTACT CHANNELS", "Email    shashank.manikanta@gmail.com", "GitHub   github.com/Tvmsasank", "LinkedIn linkedin.com/in/venkatamani-sasank", "Location Hyderabad, India", "", "Use the contact links in the page to open these channels."] }; }
   if (lower === "pwd") return { lines: ["/home/venkatamani/portfolio"] };
   if (lower === "clear") return { lines: [] };
   return { tone: "error", lines: [`command not found: ${command}`, "Type `help` to see available commands."] };
 }
 
-export function useTerminal(onNavigate?: Navigate) {
+export function useTerminal(onProjectSelect?: ProjectSelectCallback) {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);

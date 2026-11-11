@@ -38,18 +38,19 @@ function AppContent() {
     }, 50);
   };
 
-  const handleNavigate = (id: string) => {
-    const normalized = normalizeProjectId(id);
-    if (PROJECTS.some((project) => project.id === normalized)) {
-      scrollToProject(normalized);
-      return;
+  const handleTerminalProjectSelect = (rawId: string) => {
+    const id = normalizeProjectId(rawId);
+    if (PROJECTS.some((project) => project.id === id)) {
+      setActiveProject(id);
     }
-    scrollToSection(id);
   };
 
   return (
     <div className="portfolio-root">
-      <TerminalShell onNavigate={handleNavigate} />
+      <TerminalShell
+        onProjectSelect={handleTerminalProjectSelect}
+        onBrowseProjects={() => scrollToSection("projects")}
+      />
       <nav className="portfolio-nav" aria-label="Main navigation">
         <a className="nav-brand" href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}><span>V.</span> VENKATAMANI SASANK</a>
         <div className="nav-links">{NAV.map((item) => <button key={item} onClick={() => scrollToSection(item.toLowerCase())}>{item}</button>)}</div>

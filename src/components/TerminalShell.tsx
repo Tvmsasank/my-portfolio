@@ -3,10 +3,13 @@ import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight, ChevronRight, Command, Github, Linkedin, Mail, Terminal as TerminalIcon } from "lucide-react";
 import { useTerminal } from "../hooks/useTerminal";
 
-type Props = { onNavigate?: (id: string) => void };
+type Props = {
+  onProjectSelect?: (id: string) => void;
+  onBrowseProjects?: () => void;
+};
 
-export function TerminalShell({ onNavigate }: Props) {
-  const { input, setInput, outputs, suggestions, execute, onKeyDown } = useTerminal(onNavigate);
+export function TerminalShell({ onProjectSelect, onBrowseProjects }: Props) {
+  const { input, setInput, outputs, suggestions, execute, onKeyDown } = useTerminal(onProjectSelect);
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
   useEffect(() => { outputRef.current?.scrollTo({ top: outputRef.current.scrollHeight, behavior: "smooth" }); }, [outputs]);
@@ -47,8 +50,8 @@ export function TerminalShell({ onNavigate }: Props) {
             </div>
             <div className="terminal-statusbar"><span><i /> UTF-8</span><span>PORTFOLIO COMMAND INTERFACE</span><span>REACT / TYPESCRIPT</span></div>
           </div>
-          <div className="command-area"><div className="command-area-heading"><span><Command size={13} /> QUICK COMMANDS</span><span>SELECT TO EXPLORE <ArrowUpRight size={12} /></span></div><div className="command-grid">{suggestions.map((item) => <button type="button" className="command-chip" key={item.command} onClick={() => execute(item.command)}><span className="chip-prompt"><ChevronRight size={13} /></span><span className="chip-copy"><strong>{item.command}</strong><small>{item.description}</small></span><ArrowUpRight className="chip-arrow" size={13} /></button>)}</div></div>
-          <footer className="terminal-footer"><span>THE TERMINAL IS A NAVIGATION LAYER — THE CASE STUDIES ARE BELOW.</span><button onClick={() => onNavigate?.("projects")}>BROWSE FULL PROJECTS <ArrowUpRight size={12} /></button></footer>
+          <div className="command-area"><div className="command-area-heading"><span><Command size={13} /> QUICK COMMANDS</span><span>SELECT TO EXPLORE <ArrowUpRight size={12} /></span></div><div className="command-grid">{suggestions.map((item) => <button type="button" className="command-chip" key={item.command} onClick={(event) => { event.preventDefault(); execute(item.command); }}><span className="chip-prompt"><ChevronRight size={13} /></span><span className="chip-copy"><strong>{item.command}</strong><small>{item.description}</small></span><ArrowUpRight className="chip-arrow" size={13} /></button>)}</div></div>
+          <footer className="terminal-footer"><span>THE TERMINAL IS A NAVIGATION LAYER — THE CASE STUDIES ARE BELOW.</span><button onClick={onBrowseProjects}>BROWSE FULL PROJECTS <ArrowUpRight size={12} /></button></footer>
         </div>
       </div>
     </section>
