@@ -4,6 +4,16 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Select website version to deploy'
+        required: true
+        default: 'new-redesign'
+        type: choice
+        options:
+          - new-redesign
+          - old-website
 
 permissions:
   contents: read
@@ -17,6 +27,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.version == 'old-website' && 'backup-old-main' || 'main' }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
