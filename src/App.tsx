@@ -11,6 +11,10 @@ import {
   Menu,
   X,
   Award,
+  Clock,
+  Zap,
+  RotateCcw,
+  ShieldCheck,
 } from "lucide-react";
 
 // ── Animation Variants ───────────────────────────────────────────────────────
@@ -56,6 +60,85 @@ function Reveal({
 // ── Data ──────────────────────────────────────────────────────────────────────
 
 const NAV_ITEMS = ["About", "Experience", "UpSkilling", "Projects", "Skills", "Contact"];
+
+const FEATURED_PROJECT = {
+  title: "Enterprise Blue-Green CI/CD Pipeline for .NET & IIS",
+  subheading:
+    "Zero-Downtime Automated Deployment, Instant Rollback & Infrastructure Hardening",
+  role: "Lead DevOps / Backend Engineer (Solo Initiator)",
+  period: "Latest Enterprise Work",
+  type: "Enterprise CI/CD & Infrastructure",
+  stack: [
+    "GitLab CI/CD",
+    ".NET 9",
+    "Windows Server 2022",
+    "IIS 10",
+    "PowerShell",
+    "Robocopy",
+    "URL Authorization",
+  ],
+  metrics: [
+    {
+      label: "Deployment Time",
+      before: "10–15 Mins",
+      after: "< 45 Seconds",
+      badge: "95% Faster",
+      icon: Clock,
+    },
+    {
+      label: "Production Downtime",
+      before: "5–10 Mins outage",
+      after: "Zero Downtime",
+      badge: "0 ms Outage",
+      icon: Zap,
+    },
+    {
+      label: "Emergency Rollback",
+      before: "20+ Mins manual",
+      after: "< 1 Second",
+      badge: "Instant 1-Click",
+      icon: RotateCcw,
+    },
+    {
+      label: "Security Isolation",
+      before: "Open / Unrestricted",
+      after: "Strict Lockdown",
+      badge: "URL Auth Rules",
+      icon: ShieldCheck,
+    },
+  ],
+  challenges: [
+    "Production releases were performed manually via file copying, leading to service downtime, file-lock collisions, and high risk during updates.",
+    "Publishing large .NET enterprise applications with 40,000+ files created massive network overhead (10–15 min builds) when passing artifacts over HTTP.",
+    "Pre-production testing lacked secure isolation on the same server, risking accidental access to unreleased features by regular domain users.",
+  ],
+  solutions: [
+    {
+      title: "Multi-Tenant Port 80 Architecture",
+      desc: "Designed an isolated Blue-Green hosting model under IIS Default Web Site (/App live and /App_Standby preview) eliminating port bindings or IP collisions.",
+    },
+    {
+      title: "High-Velocity Pipeline (< 45 Seconds)",
+      desc: "Merged local compilation and silent delta synchronization using PowerShell and Robocopy, bypassing artifact upload bottlenecks.",
+    },
+    {
+      title: "Automated Zero-Downtime Cutover",
+      desc: "Built atomic switching scripts that swap virtual application physical paths and reassign application pools in milliseconds.",
+    },
+    {
+      title: "Instant 1-Click Rollback",
+      desc: "Developed an emergency reversal mechanism that restores the previous verified slot in under 1 second.",
+    },
+    {
+      title: "Strict Standby Lockdown",
+      desc: "Implemented native IIS URL Authorization rules combined with Basic Authentication to restrict preview environments strictly to designated tester credentials.",
+    },
+    {
+      title: "Centralized CI Governance",
+      desc: "Isolated CI/CD definitions in a private administrator repository, enforcing strict branch workflow rules to block unwanted pipelines from developer feature branches.",
+    },
+  ],
+};
 
 const PROJECTS = [
   {
@@ -169,9 +252,9 @@ const SKILLS = [
     cat: "Cloud / AWS",
     items: ["S3", "EC2", "Lambda", "API Gateway", "CloudFront", "Route 53", "IAM", "VPC", "SNS", "CloudWatch", "ECR", "ECS"],
   },
-  { cat: "Languages", items: ["C", "C#", "JavaScript"] },
-  { cat: "DevOps", items: ["Git", "GitHub", "GitHub Actions", "Maven", "Docker", "Linux", "Terraform", "Jenkins"] },
-  { cat: "Frameworks", items: ["ASP.NET MVC"] },
+  { cat: "Languages", items: ["C", "C#", "JavaScript", "PowerShell"] },
+  { cat: "DevOps", items: ["Git", "GitHub", "GitHub Actions", "GitLab CI/CD", "Maven", "Docker", "Linux", "Terraform", "Jenkins", "IIS 10", "Robocopy"] },
+  { cat: "Frameworks", items: [".NET 9", "ASP.NET MVC"] },
   { cat: "Databases", items: ["MS SQL, MYSQL"] },
   { cat: "Tools", items: ["Visual Studio 2022", "VSCode", "Antigravity"] },
 ];
@@ -822,6 +905,146 @@ export default function App() {
               >
                 Selected Work
               </motion.h2>
+
+              {/* ── FEATURED ENTERPRISE PROJECT ───────────────────────── */}
+              <motion.article
+                variants={fadeUp}
+                className="relative bg-card border border-border/80 p-7 sm:p-9 md:p-11 mb-12 overflow-hidden group hover:border-primary/40 transition-all duration-500 shadow-xl"
+              >
+                {/* Accent bar & ambient subtle gradient */}
+                <div className="absolute left-0 top-0 bottom-0 w-[4px] bg-gradient-to-b from-blue-500 via-sky-400 to-emerald-400" />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] via-transparent to-sky-500/[0.02] pointer-events-none" />
+
+                <div className="relative z-10">
+                  {/* Top Badges & Meta */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-6 border-b border-border/40">
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 font-mono-label text-[10px] tracking-[0.22em] bg-primary/10 text-primary border border-primary/30 uppercase font-semibold">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                        Featured Enterprise Project
+                      </span>
+                      <span className="font-mono-label text-[10px] tracking-wider text-muted-foreground/80">
+                        · {FEATURED_PROJECT.period}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono-label text-[11px] text-primary bg-primary/[0.06] px-3 py-1 border border-primary/20 font-medium">
+                        {FEATURED_PROJECT.role}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Title & Subheading */}
+                  <div className="mb-8">
+                    <h3 className="font-display text-2xl sm:text-3xl md:text-4xl text-foreground font-semibold mb-3 tracking-tight">
+                      {FEATURED_PROJECT.title}
+                    </h3>
+                    <p className="text-base sm:text-lg text-muted-foreground leading-relaxed font-medium">
+                      {FEATURED_PROJECT.subheading}
+                    </p>
+                  </div>
+
+                  {/* Key Impact & Metrics Grid */}
+                  <div className="mb-10">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="font-mono-label text-[10px] tracking-[0.28em] text-primary uppercase font-semibold">
+                        Key Impact &amp; Metrics
+                      </span>
+                      <div className="h-[1px] flex-1 bg-border/40" />
+                    </div>
+
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+                      {FEATURED_PROJECT.metrics.map((m) => {
+                        const Icon = m.icon;
+                        return (
+                          <div
+                            key={m.label}
+                            className="p-4 sm:p-5 bg-secondary/40 border border-border/60 hover:border-primary/40 transition-colors"
+                          >
+                            <div className="flex items-center justify-between mb-2">
+                              <span className="font-mono-label text-[9px] tracking-widest uppercase text-muted-foreground">
+                                {m.label}
+                              </span>
+                              <Icon size={14} className="text-primary/70" />
+                            </div>
+                            <div className="font-display text-xl sm:text-2xl text-foreground font-bold tracking-tight mb-1">
+                              {m.after}
+                            </div>
+                            <div className="flex items-center justify-between text-xs pt-2 border-t border-border/30 mt-2">
+                              <span className="text-muted-foreground line-through text-[11px]">
+                                {m.before}
+                              </span>
+                              <span className="font-mono-label text-[10px] text-emerald-400 font-semibold">
+                                {m.badge}
+                              </span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Problem & Solution Grid */}
+                  <div className="grid md:grid-cols-12 gap-6 sm:gap-8 mb-8 pt-8 border-t border-border/40">
+                    {/* The Challenge (5 cols) */}
+                    <div className="md:col-span-5 bg-card/60 p-6 border border-border/50">
+                      <div className="flex items-center gap-2 text-rose-400 font-mono-label text-xs tracking-wider uppercase font-semibold mb-4">
+                        <span className="text-sm">🎯</span> The Challenge (Problem Statement)
+                      </div>
+                      <ul className="space-y-3.5">
+                        {FEATURED_PROJECT.challenges.map((c, i) => (
+                          <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed">
+                            <span className="text-rose-400/80 font-bold flex-shrink-0 mt-0.5">✕</span>
+                            <span>{c}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* What I Engineered (7 cols) */}
+                    <div className="md:col-span-7 bg-card/60 p-6 border border-border/50">
+                      <div className="flex items-center gap-2 text-primary font-mono-label text-xs tracking-wider uppercase font-semibold mb-4">
+                        <span className="text-sm">💡</span> What I Engineered (The Solution)
+                      </div>
+                      <ul className="space-y-4">
+                        {FEATURED_PROJECT.solutions.map((s, i) => (
+                          <li key={i} className="flex items-start gap-3 text-sm leading-relaxed">
+                            <span className="text-primary font-bold flex-shrink-0 mt-0.5">✔</span>
+                            <span className="text-muted-foreground">
+                              <strong className="text-foreground font-semibold">{s.title}:</strong>{" "}
+                              {s.desc}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap items-center gap-2 pt-6 border-t border-border/40">
+                    <span className="font-mono-label text-[10px] tracking-widest uppercase text-muted-foreground/70 mr-1">
+                      Tech Stack:
+                    </span>
+                    {FEATURED_PROJECT.stack.map((s) => (
+                      <span
+                        key={s}
+                        className="px-2.5 py-1 font-mono-label text-[10px] tracking-wider bg-secondary text-foreground/90 border border-border/40"
+                      >
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.article>
+
+              {/* Other Projects Divider */}
+              <div className="flex items-center gap-4 mb-8">
+                <span className="font-mono-label text-[10px] tracking-[0.28em] text-muted-foreground uppercase">
+                  Other Selected Projects
+                </span>
+                <div className="h-[1px] flex-1 bg-border/40" />
+              </div>
 
               <div className="grid md:grid-cols-2 gap-5">
                 {PROJECTS.map((p) => (
